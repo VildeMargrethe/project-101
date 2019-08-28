@@ -33,7 +33,10 @@ public class EmployeeService {
     }
 
     public void delete(final Long id) {
+        if (employeeRepository.existsById(id)) {
+            employeeRepository.deleteById(id);
+        }
         //TODO
-        employeeRepository.deleteById(id);
+
     }
 }
