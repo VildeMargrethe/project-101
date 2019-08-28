@@ -5,11 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import no.acntech.project101.employee.Employee;
 import no.acntech.project101.employee.service.EmployeeService;
-import no.acntech.project101.web.company.resources.CompanyDto;
-import no.acntech.project101.web.employee.resources.converter.EmployeeConverter;
-import no.acntech.project101.web.employee.resources.converter.EmployeeDtoConverter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -19,8 +15,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping("employees")
 public class EmployeeResource {
 
+    private final EmployeeService employeeService;
+
     //TODO The constructor needs to accept the required dependencies and assign them to class variables
-    public EmployeeResource() {
+    public EmployeeResource(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
     @GetMapping
     public ResponseEntity<List<EmployeeDto>> findAll() {
